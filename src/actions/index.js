@@ -1,7 +1,7 @@
 import axios from 'axios';
 const ROOT_URL = 'http://localhost:3090';
 import {browserHistory} from 'react-router'
-import {AUTH_USER} from "./type";
+import {AUTH_ERROR, AUTH_USER} from "./type";
 
 export function signInUser ({email, password}) {
 
@@ -20,9 +20,14 @@ export function signInUser ({email, password}) {
             .catch(() => {
                 // If request is bad...
                 //  - Shown an error to user
-
-
+                dispatch(authError('Bad Login Info!'));
             })
 
     }
+}
+
+export function authError(error) {
+    return {
+        type: AUTH_ERROR, payload: error
+    };
 }
