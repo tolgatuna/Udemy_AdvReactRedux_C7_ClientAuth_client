@@ -13,7 +13,7 @@ export function signInUser ({email, password}) {
                 //  - Update state to indicate user is authenticated
                 dispatch({type: AUTH_USER});
                 //  - Save the JWT token
-
+                localStorage.setItem('token', response.data.token);
                 //  - redirect to the router '/feature'
                 browserHistory.push('/feature');
             })
