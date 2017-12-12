@@ -1,7 +1,11 @@
 import axios from 'axios';
 const ROOT_URL = 'http://localhost:3090';
 import {browserHistory} from 'react-router'
-import {AUTH_ERROR, AUTH_USER} from "./type";
+import {
+    AUTH_ERROR,
+    AUTH_USER,
+    UNAUTH_USER
+} from "./type";
 
 export function signInUser ({email, password}) {
 
@@ -22,8 +26,12 @@ export function signInUser ({email, password}) {
                 //  - Shown an error to user
                 dispatch(authError('Bad Login Info!'));
             })
-
     }
+}
+
+export function singOutUser() {
+    localStorage.removeItem('token');
+    return {type: UNAUTH_USER};
 }
 
 export function authError(error) {
