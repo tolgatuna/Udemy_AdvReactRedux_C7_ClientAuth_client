@@ -10,14 +10,16 @@ export default function (state= {}, action) {
         case AUTH_USER: {
             return {
                 ...state,
-                authenticated: true
+                authenticated: true,
+                error: ''
             };
         }
 
         case UNAUTH_USER: {
             return {
                 ...state,
-                authenticated: false
+                authenticated: false,
+                error: ''
             }
         }
 
